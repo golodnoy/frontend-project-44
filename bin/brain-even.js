@@ -2,39 +2,42 @@
 import readlineSync from 'readline-sync';
 import { userName } from '../src/cli.js';
 
-isScorer();
+const isEven = (num) => {
+  if (num % 2 !== 0) {
+    return 'no';
+  }
+  return 'yes';
+};
 
-function isScorer () {
+const checkAnswer = (num, answer) => {
+  const correctAnswer = isEven(num);
+  if (correctAnswer !== answer) {
+    return false;
+  }
+  return true;
+};
+
+const isScore = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let score = 0;
   for (let i = 0; i < 100; i += 1) {
-    if (score < 3) {
-      const randomNum = readlineSync.question(`Question: ${(Math.floor(Math.random() * 100) + 1)}`);
-      const userAnswer = readlineSync.question('Your answer: ');
-      const checkAnswer = (num, answer) => {
-        const isEven = (nuv) => {
-          if (nuv % 2 === 0) {
-            return 'yes';
-          }
-          return 'no';
-        };
-        const correctAnswer = isEven(num);
-        if (correctAnswer !== answer) {
-          console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.\n Let's try again, ${userName}!`);
-        } else {
-          return true;
-        }
-      };
-      const resultCheck = checkAnswer(randomNum, userAnswer);
-      if (resultCheck !== true) {
-        return resultCheck;
-        break;
-      }
-      score += 1;
-      console.log(`Correct! Your score ${score}`);
+    const randomNum = (Math.floor(Math.random() * 100) + 1);
+    console.log(`Question: ${randomNum} `);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const resultCheck = checkAnswer(randomNum, userAnswer);
+    if (resultCheck === false) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${isEven(randomNum)}.\n Let's try again, ${userName}!`);
+      break;
+    }
+    score += 1;
+    console.log('Correct!');
+    //console.log(`Correct! Your score ${score}`);
+    if (score > 2) {
+      console.log(`Congratulations, ${userName}!`);
+      break;
     }
   }
-  console.log(`Congratulations, ${userName}!`);
-}
+};
+export default isScore;
 
-export default isScorer;
+isScore();
