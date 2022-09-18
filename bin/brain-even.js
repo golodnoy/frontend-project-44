@@ -22,16 +22,15 @@ const isScore = () => {
   let score = 0;
   for (let i = 0; i < 100; i += 1) {
     const randomNum = (Math.floor(Math.random() * 100) + 1);
-    console.log(`Question: ${randomNum} `);
+    console.log(`Question: ${randomNum}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const resultCheck = checkAnswer(randomNum, userAnswer);
     if (resultCheck === false) {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${isEven(randomNum)}.\n Let's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${isEven(randomNum)}'.\n Let's try again, ${userName}!`);
       break;
     }
     score += 1;
     console.log('Correct!');
-    //console.log(`Correct! Your score ${score}`);
     if (score > 2) {
       console.log(`Congratulations, ${userName}!`);
       break;
