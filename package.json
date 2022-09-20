@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/golodnoy/frontend-project-44#readme",
   "dependencies": {
+    "@hexlet/pairs": "^1.1.1",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
