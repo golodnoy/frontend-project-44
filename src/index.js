@@ -4,39 +4,42 @@ console.log('Welcome to the Brain Games!');
 
 export const userName = readlineSync.question('May I have your name? ');
 export const alertUser = console.log(`Hello, ${userName}!`);
+export const rulesText = (str) => {
+  console.log(str);
+};
+export const isRandom = () => {
+  const num = (Math.floor(Math.random() * 100) + 1);
+  return num;
+};
 
-function isEngine () { 
+export const question = (str) => {
+  console.log(str);
+};
 
-  const isRules = (str) => { 
-    console.log(str)
-  }; 
+export const checkResult = (result) => {
+  if (result === false) {
+    return false;
+  }
+  return result;
+};
 
+const isEngine = () => {
   let score = 0;
   for (let i = 0; i < 100; i += 1) {
-
-    const isRandom = () => {
-      const num = (Math.floor(Math.random() * 100) + 1);
-      return num;
-    };
-
-    const isQuestion = (str) => { 
-      console.log(str);
-  }
-    const userAnswer = readlineSync.question('Your answer: ');
-
-const checkResult = (result, correctAnswer) => {
-     if (result === false) {
-     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
-        //break;
-     }
-    };
+    question();
+    let userAnswer = readlineSync.question('Your answer: ');
+    checkResult();
+    if (checkResult === false) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+      break;
+    }
     score += 1;
     console.log('Correct!');
     if (score > 2) {
       console.log(`Congratulations, ${userName}!`);
       break;
- }
+    }
 }
 };
 
-export default isEngine;
+export { isEngine };
