@@ -17,20 +17,25 @@ export const question = (str) => {
 };
 
 export const checkResult = (result) => {
-  if (result === false) {
+  if (result !== true) {
     return false;
   }
   return result;
 };
 
-const isEngine = () => {
+export const viewBugs = (userAnswer, correctAnswer) => {
+  let first = userAnswer;
+  let second = correctAnswer;
+};
+
+export function flowGame() {
   let score = 0;
   for (let i = 0; i < 100; i += 1) {
     question();
-    let userAnswer = readlineSync.question('Your answer: ');
     checkResult();
+    console.log(score);
     if (checkResult === false) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+      console.log(`'${first}' is wrong answer ;(. Correct answer was '${second}'.\n Let's try again, ${userName}!`);
       break;
     }
     score += 1;
@@ -39,7 +44,5 @@ const isEngine = () => {
       console.log(`Congratulations, ${userName}!`);
       break;
     }
-}
+  }
 };
-
-export { isEngine };

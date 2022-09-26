@@ -1,11 +1,9 @@
+import { cons } from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-import {
-  isRandom, question, checkResult, rulesText 
-} from '../src/index.js';
-
-const characters = '*+-';
+import * as index from '../src/index.js';
 
 function generateString() {
+  const characters = '*+-';
   let result = ' ';
   const charactersLength = characters.length;
   result = characters.charAt((Math.random() * charactersLength));
@@ -13,23 +11,27 @@ function generateString() {
 }
 
 const checkAnswerCalc = (num1, num2, char1, userAnswer) => {
-  let correctAnswer = eval(`(${num1}${char1}${num2})`);
-  if (correctAnswer !== userAnswer) {
+  const correctAnswer = Number(eval(`(${num1}${char1}${num2})`));
+  console.log(`cor answ ${correctAnswer}`);
+  if (correctAnswer !== Number(userAnswer)) {
     return false;
   }
   return true;
 };
 
 function isCalcGame() {
-  rulesText('What is the result of the expression?');
-  let randomNum1 = isRandom();
-  let randomNum2 = isRandom();
+  index.rulesText('What is the result of the expression?');
+  let randomNum1 = index.isRandom();
+  let randomNum2 = index.isRandom();
   let char = generateString();
-  question(`Question: ${randomNum1}${char}${randomNum2}`);
+  index.question(`Question: ${randomNum1}${char}${randomNum2}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  // eslint-disable-next-line no-eval
+  console.log(`usr answ ${userAnswer}`);
   const resultCalc = checkAnswerCalc(randomNum1, randomNum2, char, userAnswer);
-  checkResult(resultCalc);
+  console.log(`result calc:${resultCalc}`);
+  index.checkResult(resultCalc);
+  //index.viewBugs(userAnswer, correctAnswer);
+  // eslint-disable-next-line no-eval
 };
 
-export { isCalcGame };
+export {isCalcGame};
