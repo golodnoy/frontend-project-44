@@ -1,19 +1,13 @@
-import { cons } from '@hexlet/pairs';
-import readlineSync from 'readline-sync';
+// eslint-disable-next-line import/no-cycle
 import * as index from '../src/index.js';
 
-function generateString() {
+function generateSign() {
   const characters = '*+-';
   let result = ' ';
   const charactersLength = characters.length;
   result = characters.charAt((Math.random() * charactersLength));
   return result;
 }
-
-export const defineCorrectAnswer = (question) => {
-  let correctAnswer = Number((eval(question)));
-  return correctAnswer;
-};
 
 export const defineResult = (correctAnswer, userAnswer) => {
   if (correctAnswer !== Number(userAnswer)) {
@@ -22,15 +16,27 @@ export const defineResult = (correctAnswer, userAnswer) => {
   return true;
 };
 
-export function createQuestionCalc() {
-  let randomNum1 = (Math.floor(Math.random() * 100) + 1);
-  let randomNum2 = (Math.floor(Math.random() * 100) + 1);
-  let char = generateString();
-  return (`${randomNum1}${char}${randomNum2}`);
+export const modSymbol = (num1, num2, char) => {
+  let result = 0;
+  if (char === '+') {
+    result = num1 + num2;
+  } else if (char === '-') {
+    result = num1 - num2;
+  } else (result = num1 * num2);
+  return result;
 };
+
+export function createQuestionCalc() {
+  const firstValue = (Math.floor(Math.random() * 100) + 1);
+  const secondValue = (Math.floor(Math.random() * 100) + 1);
+  const sign = generateSign();
+  const correctAnswer = modSymbol(firstValue, secondValue, sign);
+  const question = (`${firstValue}${sign}${secondValue}`);
+  return [question, correctAnswer];
+}
 
 export function isCalcGame() {
   const game = 'calc';
   index.rulesText('What is the result of the expression?');
   index.engineGame(game);
-};
+}

@@ -1,5 +1,4 @@
-import { RuleTester } from 'eslint';
-import readlineSync from 'readline-sync';
+// eslint-disable-next-line import/no-cycle
 import * as index from '../src/index.js';
 
 const isEven = (num) => {
@@ -7,13 +6,6 @@ const isEven = (num) => {
     return 'no';
   }
   return 'yes';
-};
-
-export const defineCorrectAnswer = (question) => {
-  //let questionNum = Number(question);
-  let correctAnswer = isEven(Number(question));
-  console.log(`debug even: ${correctAnswer}`);
-  return correctAnswer;
 };
 
 export const defineResult = (correctAnswer, userAnswer) => {
@@ -25,7 +17,8 @@ export const defineResult = (correctAnswer, userAnswer) => {
 
 export const createQuestionEven = () => {
   const randomNum = index.isRandom();
-  return randomNum;
+  const correctAnswer = isEven(randomNum);
+  return [randomNum, correctAnswer];
 };
 
 export const isEvenGame = () => {

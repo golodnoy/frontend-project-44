@@ -1,5 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import readlineSync, { question } from 'readline-sync';
+// eslint-disable-next-line import/no-cycle
 import * as calc from '../games/calc.js';
+// eslint-disable-next-line import/no-cycle
 import * as even from '../games/even.js';
 
 console.log('Welcome to the Brain Games!');
@@ -12,43 +15,37 @@ export const rulesText = (str) => {
 export const isRandom = () => (Math.floor(Math.random() * 100) + 1);
 
 export const getQuestion = (game) => {
-  let question = '';
+  let questionArray = [];
   if (game === 'calc') {
-    question = calc.createQuestionCalc();
+    questionArray = calc.createQuestionCalc();
   } else if (game === 'even') {
-    question = even.createQuestionEven();
+    questionArray = even.createQuestionEven();
   }
-  return question;
-};
-export const getCorrectAnswer = (game, question) => {
-  if (game === 'calc') {
-    return calc.defineCorrectAnswer(question);
-  } if (game === 'even') {
-    return even.defineCorrectAnswer(question);
-  }
+  return questionArray;
 };
 
-export const getCheckresult = (game, userAnswer, question) => {
-  const correctAnswer = getCorrectAnswer(game, question);
-  console.log(`cor answ ${correctAnswer}`);
+export const getCheckresult = (game, userAnswer, correctAnswer) => {
+  const questionAnswer = correctAnswer;
+  let result = Boolean;
   if (game === 'calc') {
-    return calc.defineResult(correctAnswer, userAnswer);
+    result = calc.defineResult(questionAnswer, userAnswer);
   } if (game === 'even') {
-    return even.defineResult(correctAnswer, userAnswer);
+    result = even.defineResult(questionAnswer, userAnswer);
   }
+  return result;
 };
 
 export function engineGame(game) {
   let score = 0;
 
   for (let i = 0; i < 100; i += 1) {
-    let question = getQuestion(game);
-    console.log(`Question: ${question}`);
-    let userAnswer = readlineSync.question('Your answer: ');
-    let result = getCheckresult(game, userAnswer, question);
-    let correctAnswer = getCorrectAnswer(game, question);
-    console.log(result);
-    if (result === false) {
+    const questionArray = getQuestion(game);
+    const questionRound = questionArray[0];
+    const correctAnswer = questionArray[1];
+    console.log(`Question: ${questionRound}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const resultRound = getCheckresult(game, userAnswer, correctAnswer);
+    if (resultRound === false) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
       break;
     }
@@ -59,4 +56,4 @@ export function engineGame(game) {
       break;
     }
   }
-};
+}
