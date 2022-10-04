@@ -16,7 +16,7 @@ export const defineResult = (correctAnswer, userAnswer) => {
   return true;
 };
 
-export const modSymbol = (num1, num2, char) => {
+export const calcResult = (num1, num2, char) => {
   let result = 0;
   if (char === '+') {
     result = num1 + num2;
@@ -30,7 +30,7 @@ export function createQuestionCalc() {
   const firstValue = (Math.floor(Math.random() * 100) + 1);
   const secondValue = (Math.floor(Math.random() * 100) + 1);
   const sign = generateSign();
-  const correctAnswer = modSymbol(firstValue, secondValue, sign);
+  const correctAnswer = calcResult(firstValue, secondValue, sign);
   const question = (`${firstValue}${sign}${secondValue}`);
   return [question, correctAnswer];
 }

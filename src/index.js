@@ -4,6 +4,8 @@ import readlineSync, { question } from 'readline-sync';
 import * as calc from '../games/calc.js';
 // eslint-disable-next-line import/no-cycle
 import * as even from '../games/even.js';
+// eslint-disable-next-line import/no-cycle
+import * as gcd from '../games/gcd.js';
 
 console.log('Welcome to the Brain Games!');
 
@@ -18,8 +20,10 @@ export const getQuestion = (game) => {
   let questionArray = [];
   if (game === 'calc') {
     questionArray = calc.createQuestionCalc();
-  } else if (game === 'even') {
+  } if (game === 'even') {
     questionArray = even.createQuestionEven();
+  } if (game === 'gcd') {
+    questionArray = gcd.createQuestionGcd();
   }
   return questionArray;
 };
