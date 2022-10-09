@@ -35,6 +35,8 @@ export const getCheckresult = (game, userAnswer, correctAnswer) => {
     result = calc.defineResult(questionAnswer, userAnswer);
   } if (game === 'even') {
     result = even.defineResult(questionAnswer, userAnswer);
+  } if (game === 'gcd') {
+    result = gcd.defineResult(questionAnswer, userAnswer);
   }
   return result;
 };
