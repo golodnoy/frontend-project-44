@@ -6,6 +6,8 @@ import * as calc from '../games/calc.js';
 import * as even from '../games/even.js';
 // eslint-disable-next-line import/no-cycle
 import * as gcd from '../games/gcd.js';
+// eslint-disable-next-line import/no-cycle
+import * as progression from '../games/progression.js';
 
 console.log('Welcome to the Brain Games!');
 
@@ -24,6 +26,8 @@ export const getQuestion = (game) => {
     questionArray = even.createQuestionEven();
   } if (game === 'gcd') {
     questionArray = gcd.createQuestionGcd();
+  } if (game === 'progression') {
+    questionArray = progression.createQuestionProgression();
   }
   return questionArray;
 };
@@ -37,6 +41,8 @@ export const getCheckresult = (game, userAnswer, correctAnswer) => {
     result = even.defineResult(questionAnswer, userAnswer);
   } if (game === 'gcd') {
     result = gcd.defineResult(questionAnswer, userAnswer);
+  } if (game === 'progression') {
+    result = progression.defineResult(questionAnswer, userAnswer);
   }
   return result;
 };
