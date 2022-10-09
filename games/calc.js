@@ -31,7 +31,7 @@ export function createQuestionCalc() {
   const secondValue = (Math.floor(Math.random() * 100) + 1);
   const sign = generateSign();
   const correctAnswer = calcResult(firstValue, secondValue, sign);
-  const question = (`${firstValue}${sign}${secondValue}`);
+  const question = (`${firstValue} ${sign} ${secondValue}`);
   return [question, correctAnswer];
 }
 
