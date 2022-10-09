@@ -56,7 +56,7 @@ export const getCheckresult = (game, userAnswer, correctAnswer) => {
 export function engineGame(game) {
   let score = 0;
 
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const questionArray = getQuestion(game);
     const questionRound = questionArray[0];
     const correctAnswer = questionArray[1];
