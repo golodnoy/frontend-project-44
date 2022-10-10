@@ -13,10 +13,8 @@ export const createQuestionProgression = () => {
   const repNum = (Math.floor(Math.random() * 10) + 1);
   const correctAnswer = array[repNum];
   array[repNum] = '..';
-  const arString = String(array);
-  console.log(arString);
-
-  return [array, correctAnswer];
+  const arString = array.join(' ');
+  return [arString, correctAnswer];
 };
 
 export const defineResult = (correctAnswer, userAnswer) => {
