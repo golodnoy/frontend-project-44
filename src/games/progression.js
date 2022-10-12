@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import * as index from '../src/index.js';
+import * as index from '../index.js';
 
 export const createQuestionProgression = () => {
   let result = index.isRandom();

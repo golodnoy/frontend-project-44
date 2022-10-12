@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import * as index from '../src/index.js';
+import * as index from '../index.js';
 
 const isEven = (num) => {
   if (num % 2 !== 0) {

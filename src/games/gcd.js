@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import * as index from '../src/index.js';
+import * as index from '../index.js';
 
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
