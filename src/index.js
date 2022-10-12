@@ -1,15 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import readlineSync, { question } from 'readline-sync';
 // eslint-disable-next-line import/no-cycle
-import * as calc from '../games/calc.js';
+import * as calc from '../src/games/calc.js';
 // eslint-disable-next-line import/no-cycle
-import * as even from '../games/even.js';
+import * as even from '../src/games/even.js';
 // eslint-disable-next-line import/no-cycle
-import * as gcd from '../games/gcd.js';
+import * as gcd from '../src/games/gcd.js';
 // eslint-disable-next-line import/no-cycle
-import * as progression from '../games/progression.js';
+import * as progression from '../src/games/progression.js';
 // eslint-disable-next-line import/no-cycle
-import * as prime from '../games/prime.js';
+import * as prime from '../src/games/prime.js';
 
 console.log('Welcome to the Brain Games!');
 
