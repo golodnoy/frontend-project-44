@@ -2,6 +2,9 @@ import * as index from '../index.js';
 import getDividers from '../dividers.js';
 
 export const checkPrime = (num) => {
+  if (num === 1) {
+    return 'no';
+  }
   const arrayDividers = getDividers(num);
   if (arrayDividers.length < 3) {
     return 'yes';
