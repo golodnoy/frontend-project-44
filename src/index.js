@@ -1,5 +1,7 @@
 import readlineSync from 'readline-sync';
-import { userName } from './cli.js';
+import isHello from './cli.js';
+
+const userName = isHello();
 
 export const rulesText = (str) => {
   console.log(str);
@@ -34,7 +36,6 @@ const RoundGame = () => {
   console.log(`Question: ${questionRound}`);
   const userAnswer = readlineSync.question('Your answer: ');
   const resulRound = checkResult([userAnswer, correctAnswer]);
-  console.log(`результат проверки ${resulRound}`);
   if (resulRound !== true) {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
     return resulRound;

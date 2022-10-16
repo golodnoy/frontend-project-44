@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import * as index from '../index.js';
 
 export const createQuestionProgression = () => {
@@ -14,18 +13,13 @@ export const createQuestionProgression = () => {
   const correctAnswer = array[repNum];
   array[repNum] = '..';
   const arrToString = array.join(' ');
-  return [arrToString, correctAnswer];
-};
-
-export const defineResult = (correctAnswer, userAnswer) => {
-  if (correctAnswer !== Number(userAnswer)) {
-    return false;
-  }
-  return true;
+  index.questionArray.push([arrToString, correctAnswer]);
 };
 
 export const isProgressionGame = () => {
-  const game = 'progression';
   index.rulesText('What number is missing in the progression?');
-  index.engineGame(game);
+  createQuestionProgression();
+  createQuestionProgression();
+  createQuestionProgression();
+  index.game();
 };

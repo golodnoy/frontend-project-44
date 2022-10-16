@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import * as index from '../index.js';
 
 function getMaxOfArray(numArray) {
@@ -33,18 +32,13 @@ export const createQuestionGcd = () => {
   const secondValue = (Math.floor(Math.random() * 100) + 1);
   const question = `${firstValue} ${secondValue}`;
   const correctAnswer = calcTotalDiv(firstValue, secondValue);
-  return [question, correctAnswer];
-};
-
-export const defineResult = (correctAnswer, userAnswer) => {
-  if (correctAnswer !== Number(userAnswer)) {
-    return false;
-  }
-  return true;
+  index.questionArray.push([question, correctAnswer]);
 };
 
 export const isGcdGame = () => {
-  const game = 'gcd';
   index.rulesText('Find the greatest common divisor of given numbers.');
-  index.engineGame(game);
+  createQuestionGcd();
+  createQuestionGcd();
+  createQuestionGcd();
+  index.game();
 };

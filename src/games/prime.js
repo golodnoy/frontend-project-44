@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import * as index from '../index.js';
 
 const isPrime = (num) => {
@@ -14,21 +13,16 @@ const isPrime = (num) => {
   return 'no';
 };
 
-export const defineResult = (correctAnswer, userAnswer) => {
-  if (correctAnswer !== String(userAnswer)) {
-    return false;
-  }
-  return true;
-};
-
 export const createQuestionPrime = () => {
   const randomNum = index.isRandom();
   const correctAnswer = isPrime(randomNum);
-  return [randomNum, correctAnswer];
+  index.questionArray.push([randomNum, correctAnswer]);
 };
 
 export const isPrimeGame = () => {
-  const game = 'prime';
   index.rulesText('Answer "yes" if given number is prime. Otherwise answer "no".');
-  index.engineGame(game);
+  createQuestionPrime();
+  createQuestionPrime();
+  createQuestionPrime();
+  index.game();
 };
