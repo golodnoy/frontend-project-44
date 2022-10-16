@@ -1,23 +1,9 @@
 import * as index from '../index.js';
+import getDividers from '../dividers.js';
 
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
 }
-
-export const dividers = (num) => {
-  const arr = [];
-  for (let i = 0; i <= num; i += 1) {
-    if (num % i === 0) {
-      arr.push(i);
-    }
-  }
-  return arr;
-};
-
-export const getDividers = (num) => {
-  const array = dividers(num);
-  return array;
-};
 
 export const calcTotalDiv = (num1, num2) => {
   const arrayNum1 = getDividers(num1);

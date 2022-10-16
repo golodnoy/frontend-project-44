@@ -1,12 +1,8 @@
 import * as index from '../index.js';
+import getDividers from '../dividers.js';
 
 const isPrime = (num) => {
-  const arrayDividers = [];
-  for (let i = 0; i <= num; i += 1) {
-    if (num % i === 0) {
-      arrayDividers.push(i);
-    }
-  }
+  const arrayDividers = getDividers(num);
   if (arrayDividers.length < 3) {
     return 'yes';
   }
