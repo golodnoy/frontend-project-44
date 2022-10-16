@@ -1,7 +1,7 @@
 import * as index from '../index.js';
 import getDividers from '../dividers.js';
 
-const isPrime = (num) => {
+const checkPrime = (num) => {
   const arrayDividers = getDividers(num);
   if (arrayDividers.length < 3) {
     return 'yes';
@@ -12,7 +12,7 @@ const isPrime = (num) => {
 export const createQuestionPrime = () => {
   for (let i = 0; i < 3; i += 1) {
     const randomNum = index.isRandom();
-    const correctAnswer = isPrime(randomNum);
+    const correctAnswer = checkPrime(randomNum);
     index.questionArray.push([randomNum, correctAnswer]);
   }
 };
