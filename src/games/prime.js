@@ -1,7 +1,7 @@
 import * as index from '../index.js';
 import getDividers from '../dividers.js';
 
-const checkPrime = (num) => {
+export const checkPrime = (num) => {
   const arrayDividers = getDividers(num);
   if (arrayDividers.length < 3) {
     return 'yes';
@@ -9,7 +9,7 @@ const checkPrime = (num) => {
   return 'no';
 };
 
-export const createQuestionPrime = () => {
+export const createQuestion = () => {
   for (let i = 0; i < 3; i += 1) {
     const randomNum = index.isRandom();
     const correctAnswer = checkPrime(randomNum);
@@ -19,6 +19,6 @@ export const createQuestionPrime = () => {
 
 export const isPrimeGame = () => {
   index.rulesText('Answer "yes" if given number is prime. Otherwise answer "no".');
-  createQuestionPrime();
+  createQuestion();
   index.game();
 };
