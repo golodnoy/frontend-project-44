@@ -19,18 +19,18 @@ export const calcResult = (num1, num2, char) => {
 };
 
 export const createQuestionCalc = () => {
-  const firstValue = (Math.floor(Math.random() * 100) + 1);
-  const secondValue = (Math.floor(Math.random() * 100) + 1);
-  const sign = generateSign();
-  const correctAnswer = calcResult(firstValue, secondValue, sign);
-  const question = (`${firstValue} ${sign} ${secondValue}`);
-  index.questionArray.push([question, correctAnswer]);
+  for (let i = 0; i < 3; i += 1) {
+    const firstValue = (Math.floor(Math.random() * 100) + 1);
+    const secondValue = (Math.floor(Math.random() * 100) + 1);
+    const sign = generateSign();
+    const correctAnswer = calcResult(firstValue, secondValue, sign);
+    const question = (`${firstValue} ${sign} ${secondValue}`);
+    index.questionArray.push([question, correctAnswer]);
+  }
 };
 
 export function isCalcGame() {
   index.rulesText('What is the result of the expression?');
-  createQuestionCalc();
-  createQuestionCalc();
   createQuestionCalc();
   index.game();
 }

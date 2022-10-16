@@ -14,15 +14,15 @@ const isPrime = (num) => {
 };
 
 export const createQuestionPrime = () => {
-  const randomNum = index.isRandom();
-  const correctAnswer = isPrime(randomNum);
-  index.questionArray.push([randomNum, correctAnswer]);
+  for (let i = 0; i < 3; i += 1) {
+    const randomNum = index.isRandom();
+    const correctAnswer = isPrime(randomNum);
+    index.questionArray.push([randomNum, correctAnswer]);
+  }
 };
 
 export const isPrimeGame = () => {
   index.rulesText('Answer "yes" if given number is prime. Otherwise answer "no".');
-  createQuestionPrime();
-  createQuestionPrime();
   createQuestionPrime();
   index.game();
 };

@@ -28,17 +28,17 @@ export const calcTotalDiv = (num1, num2) => {
 };
 
 export const createQuestionGcd = () => {
-  const firstValue = (Math.floor(Math.random() * 100) + 1);
-  const secondValue = (Math.floor(Math.random() * 100) + 1);
-  const question = `${firstValue} ${secondValue}`;
-  const correctAnswer = calcTotalDiv(firstValue, secondValue);
-  index.questionArray.push([question, correctAnswer]);
+  for (let i = 0; i < 3; i += 1) {
+    const firstValue = (Math.floor(Math.random() * 100) + 1);
+    const secondValue = (Math.floor(Math.random() * 100) + 1);
+    const question = `${firstValue} ${secondValue}`;
+    const correctAnswer = calcTotalDiv(firstValue, secondValue);
+    index.questionArray.push([question, correctAnswer]);
+  }
 };
 
 export const isGcdGame = () => {
   index.rulesText('Find the greatest common divisor of given numbers.');
-  createQuestionGcd();
-  createQuestionGcd();
   createQuestionGcd();
   index.game();
 };
