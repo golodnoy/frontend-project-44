@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-import { } from '../src/index.js';
+import { isHello } from '../src/cli.js';
+
+isHello();

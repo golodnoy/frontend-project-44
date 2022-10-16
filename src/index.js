@@ -1,77 +1,57 @@
-// eslint-disable-next-line no-unused-vars
-import readlineSync, { question } from 'readline-sync';
-// eslint-disable-next-line import/no-cycle
-import * as calc from '../src/games/calc.js';
-// eslint-disable-next-line import/no-cycle
-import * as even from '../src/games/even.js';
-// eslint-disable-next-line import/no-cycle
-import * as gcd from '../src/games/gcd.js';
-// eslint-disable-next-line import/no-cycle
-import * as progression from '../src/games/progression.js';
-// eslint-disable-next-line import/no-cycle
-import * as prime from '../src/games/prime.js';
+import readlineSync from 'readline-sync';
+import { userName } from './cli.js';
 
-console.log('Welcome to the Brain Games!');
-
-export const userName = readlineSync.question('May I have your name? ');
-export const alertUser = console.log(`Hello, ${userName}!`);
 export const rulesText = (str) => {
   console.log(str);
 };
+
+export const questionArray = [];
+
 export const isRandom = () => (Math.floor(Math.random() * 100) + 1);
 
-export const getQuestion = (game) => {
-  let questionArray = [];
-  if (game === 'calc') {
-    questionArray = calc.createQuestionCalc();
-  } if (game === 'even') {
-    questionArray = even.createQuestionEven();
-  } if (game === 'gcd') {
-    questionArray = gcd.createQuestionGcd();
-  } if (game === 'progression') {
-    questionArray = progression.createQuestionProgression();
-  } if (game === 'prime') {
-    questionArray = prime.createQuestionPrime();
-  }
-  return questionArray;
+export const FinishGame = () => {
+  console.log(`Congratulations, ${userName}!`);
 };
 
-export const getCheckresult = (game, userAnswer, correctAnswer) => {
-  const questionAnswer = correctAnswer;
-  let result = Boolean;
-  if (game === 'calc') {
-    result = calc.defineResult(questionAnswer, userAnswer);
-  } if (game === 'even') {
-    result = even.defineResult(questionAnswer, userAnswer);
-  } if (game === 'gcd') {
-    result = gcd.defineResult(questionAnswer, userAnswer);
-  } if (game === 'progression') {
-    result = progression.defineResult(questionAnswer, userAnswer);
-  } if (game === 'prime') {
-    result = prime.defineResult(questionAnswer, userAnswer);
+function checkResult(arr) {
+  const correctAnswer = arr[1];
+  const userAnswer = arr[0];
+  const userAnswerString = String(userAnswer);
+  const userAnswerNum = Number(userAnswer);
+  let answer = Boolean;
+  if (typeof (correctAnswer) === 'number') {
+    answer = (correctAnswer === userAnswerNum);
   }
-  return result;
+  if (typeof (correctAnswer) === 'string') {
+    answer = (correctAnswer === userAnswerString);
+  }
+  return answer;
+}
+
+const RoundGame = () => {
+  const questionRound = questionArray[0][0];
+  const correctAnswer = questionArray[0][1];
+  console.log(`Question: ${questionRound}`);
+  const userAnswer = readlineSync.question('Your answer: ');
+  const resulRound = checkResult([userAnswer, correctAnswer]);
+  console.log(`результат проверки ${resulRound}`);
+  if (resulRound !== true) {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+    return resulRound;
+  }
+  questionArray.shift();
+  console.log('Correct!');
+  return resulRound;
 };
 
-export function engineGame(game) {
+export function game() {
   let score = 0;
-
   for (let i = 0; i < 3; i += 1) {
-    const questionArray = getQuestion(game);
-    const questionRound = questionArray[0];
-    const correctAnswer = questionArray[1];
-    console.log(`Question: ${questionRound}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    const resultRound = getCheckresult(game, userAnswer, correctAnswer);
-    if (resultRound === false) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+    if (RoundGame() !== true) {
       break;
-    }
-    score += 1;
-    console.log('Correct!');
+    } score += 1;
     if (score > 2) {
-      console.log(`Congratulations, ${userName}!`);
-      break;
+      FinishGame();
     }
   }
 }
