@@ -4,13 +4,18 @@ function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
 }
 
-export const getDividers = (num) => {
-  const array = [];
+export const dividers = (num) => {
+  const arr = [];
   for (let i = 0; i <= num; i += 1) {
     if (num % i === 0) {
-      array.push(i);
+      arr.push(i);
     }
   }
+  return arr;
+};
+
+export const getDividers = (num) => {
+  const array = dividers(num);
   return array;
 };
 
