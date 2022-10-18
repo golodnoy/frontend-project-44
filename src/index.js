@@ -12,17 +12,15 @@ function game(rules, roundfunction) {
     const correctAnswer = questionArray[1];
     console.log(`Question: ${questionRound}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (typeof (correctAnswer) === 'number' && correctAnswer !== Number(userAnswer)) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
-      break;
-    } if (typeof (correctAnswer) === 'string' && (correctAnswer !== String(userAnswer))) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+    const messageForUser = (`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
+    if ((typeof (correctAnswer) === 'number' && (correctAnswer !== Number(userAnswer))) || (typeof (correctAnswer) === 'string' && (correctAnswer !== String(userAnswer)))) {
+      console.log(messageForUser);
       break;
     } console.log('Correct!');
     score += 1;
-    if (score > 2) { //
+    if (score > 2) {
       console.log(`Congratulations, ${userName}!`);
-    }//
+    }
   }
 }
 
