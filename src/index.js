@@ -7,19 +7,17 @@ function game(rules, roundfunction) {
   console.log(rules);
   let score = 0;
   for (let i = 0; i < 3; i += 1) {
-    const checkResult = (arr) => {
+    const checkResultRound = (arr) => {
       const correctAnswer = arr[1];
       const userAnswer = arr[0];
-      const userAnswerString = String(userAnswer);
-      const userAnswerNum = Number(userAnswer);
+      const userAnswertoString = String(userAnswer);
+      const userAnswertoNum = Number(userAnswer);
       let answer = Boolean;
       if (typeof (correctAnswer) === 'number') {
-        answer = (correctAnswer === userAnswerNum);
-      }
-      if (typeof (correctAnswer) === 'string') {
-        answer = (correctAnswer === userAnswerString);
-      }
-      return answer;
+        answer = (correctAnswer === userAnswertoNum);
+      } if (typeof (correctAnswer) === 'string') {
+        answer = (correctAnswer === userAnswertoString);
+      } return answer;
     };
     const RoundGame = () => {
       const array = roundfunction();
@@ -27,17 +25,15 @@ function game(rules, roundfunction) {
       const correctAnswer = array[1];
       console.log(`Question: ${questionRound}`);
       const userAnswer = readlineSync.question('Your answer: ');
-      const resulRound = checkResult([userAnswer, correctAnswer]);
-      if (resulRound !== true) {
+      const resultRound = checkResultRound([userAnswer, correctAnswer]);
+      if (resultRound !== true) {
         console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
-        return resulRound;
-      }
-      console.log('Correct!');
-      return resulRound;
+      } return resultRound;
     };
     if (RoundGame() !== true) {
       break;
-    } score += 1;
+    } console.log('Correct!');
+    score += 1;
     if (score > 2) {
       console.log(`Congratulations, ${userName}!`);
     }

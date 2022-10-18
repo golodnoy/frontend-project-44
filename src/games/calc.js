@@ -1,29 +1,20 @@
 import game from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
-function generateSign() {
-  const characters = '*+-';
-  const charactersLength = characters.length;
-  const result = characters.charAt((Math.random() * charactersLength));
-  return result;
-}
-
 export const createQuestionCalc = () => {
+  function generateSign() {
+    const characters = '*+-';
+    const result = characters.charAt((Math.random() * characters.length));
+    return result;
+  }
   const calcResult = (num1, num2, char) => {
     let result = 0;
-    switch (char) {
-      case '+':
-        result = num1 + num2;
-        break;
-      case '-':
-        result = num1 - num2;
-        break;
-      case '*':
-        result = num1 * num2;
-        break;
-      default:
-        return result;
-    } return result;
+    if (char === '+') {
+      result = num1 + num2;
+    } else if (char === '-') {
+      result = num1 - num2;
+    } else (result = num1 * num2);
+    return result;
   };
   const firstValue = getRandomIntInclusive(1, 100);
   const secondValue = getRandomIntInclusive(1, 100);
