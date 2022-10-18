@@ -1,35 +1,31 @@
-import * as index from '../index.js';
+import game from '../index.js';
 import getDividers from '../dividers.js';
-
-function getMaxOfArray(numArray) {
-  return Math.max.apply(null, numArray);
-}
-
-export const calcTotalDiv = (num1, num2) => {
-  const arrayNum1 = getDividers(num1);
-  const arrayNum2 = getDividers(num2);
-  const arrayComDividers = [];
-  for (let i = 0; i < arrayNum1.length; i += 1) {
-    if (arrayNum2.includes(arrayNum1[i])) {
-      arrayComDividers.push(arrayNum1[i]);
-    }
-  }
-  const maxDivider = getMaxOfArray(arrayComDividers);
-  return maxDivider;
-};
+import getRandomIntInclusive from '../util.js';
 
 export const createQuestionGcd = () => {
-  for (let i = 0; i < 3; i += 1) {
-    const firstValue = (Math.floor(Math.random() * 100) + 1);
-    const secondValue = (Math.floor(Math.random() * 100) + 1);
-    const question = `${firstValue} ${secondValue}`;
-    const correctAnswer = calcTotalDiv(firstValue, secondValue);
-    index.questionArray.push([question, correctAnswer]);
-  }
+  const calcTotalDiv = (num1, num2) => {
+    function getMaxOfArray(numArray) {
+      return Math.max.apply(null, numArray);
+    }
+    const arrayNum1 = getDividers(num1);
+    const arrayNum2 = getDividers(num2);
+    const arrayComDividers = [];
+    for (let i = 0; i < arrayNum1.length; i += 1) {
+      if (arrayNum2.includes(arrayNum1[i])) {
+        arrayComDividers.push(arrayNum1[i]);
+      }
+    }
+    const maxDivider = getMaxOfArray(arrayComDividers);
+    return maxDivider;
+  };
+  const firstValue = getRandomIntInclusive(1, 100);
+  const secondValue = getRandomIntInclusive(1, 100);
+  const question = `${firstValue} ${secondValue}`;
+  const correctAnswer = calcTotalDiv(firstValue, secondValue);
+  return [question, correctAnswer];
 };
 
 export const isGcdGame = () => {
-  index.rulesText('Find the greatest common divisor of given numbers.');
-  createQuestionGcd();
-  index.game();
+  const rules = ('Find the greatest common divisor of given numbers.');
+  game(rules, createQuestionGcd);
 };
