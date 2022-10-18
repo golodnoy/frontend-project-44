@@ -1,14 +1,14 @@
 import game from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
+function generateSign() {
+  const characters = '*+-';
+  const charactersLength = characters.length;
+  const result = characters.charAt((Math.random() * charactersLength));
+  return result;
+}
+
 export const createQuestionCalc = () => {
-  function generateSign() {
-    const characters = '*+-';
-    let result = ' ';
-    const charactersLength = characters.length;
-    result = characters.charAt((Math.random() * charactersLength));
-    return result;
-  }
   const calcResult = (num1, num2, char) => {
     let result = 0;
     switch (char) {
