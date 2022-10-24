@@ -9,7 +9,7 @@ function runGame(rules, generateRound) {
     const [question, correctAnswer] = generateRound();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if ((typeof (correctAnswer) === 'number' && (correctAnswer !== Number(userAnswer))) || (typeof (correctAnswer) === 'string' && (correctAnswer !== String(userAnswer)))) {
+    if (userAnswer !== correctAnswer) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n Let's try again, ${userName}!`);
       return;
     } console.log('Correct!');

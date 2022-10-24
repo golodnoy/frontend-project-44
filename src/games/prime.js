@@ -1,20 +1,18 @@
 import runGame from '../index.js';
-import getDividers from '../dividers.js';
 import getRandomIntInclusive from '../util.js';
 
+const isPrime = (num) => {
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return num > 1;
+};
+
 export const createQuestionPrime = () => {
-  const checkPrime = (num) => {
-    if (num === 1) {
-      return 'no';
-    }
-    const arrayDividers = getDividers(num);
-    if (arrayDividers.length < 3) {
-      return 'yes';
-    }
-    return 'no';
-  };
   const randomNum = getRandomIntInclusive(1, 100);
-  const correctAnswer = checkPrime(randomNum);
+  const correctAnswer = isPrime(randomNum) ? 'yes' : 'no';
   return [randomNum, correctAnswer];
 };
 

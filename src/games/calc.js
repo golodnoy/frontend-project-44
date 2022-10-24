@@ -6,9 +6,8 @@ const calcResult = (num1, num2, char) => {
     return num1 + num2;
   } if (char === '-') {
     return num1 - num2;
-  } if (char === '*') {
-    return num1 * num2;
   }
+  return (num1 * num2);
 };
 
 export const createQuestionCalc = () => {
@@ -16,7 +15,7 @@ export const createQuestionCalc = () => {
   const secondValue = getRandomIntInclusive(1, 100);
   const characters = '*+-';
   const sign = characters.charAt((getRandomIntInclusive(0, 2)));
-  const correctAnswer = calcResult(firstValue, secondValue, sign);
+  const correctAnswer = calcResult(firstValue, secondValue, sign).toString();
   const question = (`${firstValue} ${sign} ${secondValue}`);
   return [question, correctAnswer];
 };

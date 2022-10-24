@@ -17,7 +17,7 @@ export const createQuestionProgression = () => {
   const diff = getRandomIntInclusive(1, 10);
   const arr = generateProgression(firstNum, diff);
   const repNum = getRandomIntInclusive(1, 10);
-  const correctAnswer = arr[repNum];
+  const correctAnswer = arr[repNum].toString();
   arr[repNum] = '..';
   const arrToString = arr.join(' ');
   return [arrToString, correctAnswer];

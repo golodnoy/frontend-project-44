@@ -21,7 +21,7 @@ export const createQuestionGcd = () => {
   const firstValue = getRandomIntInclusive(1, 100);
   const secondValue = getRandomIntInclusive(1, 100);
   const question = `${firstValue} ${secondValue}`;
-  const correctAnswer = calcTotalDiv(firstValue, secondValue);
+  const correctAnswer = calcTotalDiv(firstValue, secondValue).toString();
   return [question, correctAnswer];
 };
 
