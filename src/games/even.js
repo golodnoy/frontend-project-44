@@ -1,20 +1,15 @@
-import game from '../index.js';
+import runGame from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
+const isEven = (num) => num % 2 === 0;
+
 export const createQuestionEven = () => {
-  const isEven = (num) => {
-    if (num % 2 !== 0) {
-      return 'no';
-    }
-    return 'yes';
-  };
   const randomNum = getRandomIntInclusive(1, 100);
-  let correctAnswer = '';
-  correctAnswer = isEven(randomNum);
+  const correctAnswer = isEven(randomNum) ? 'yes' : 'no';
   return [randomNum, correctAnswer];
 };
 
-export const isEvenGame = () => {
+export const playEvenGame = () => {
   const rules = ('Answer "yes" if the number is even, otherwise answer "no".');
-  game(rules, createQuestionEven);
+  runGame(rules, createQuestionEven);
 };

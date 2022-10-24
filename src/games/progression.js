@@ -1,23 +1,29 @@
-import game from '../index.js';
+import runGame from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
-export const createQuestionProgression = () => {
-  let result = getRandomIntInclusive(1, 100);
-  const diff = getRandomIntInclusive(1, 10);
+const generateProgression = (num1, num2) => {
+  let result = num1;
   const array = [];
-  array.push(result);
-  for (let j = 0; j < 10; j += 1) {
-    result += diff;
+  array.push(num1);
+  for (let i = 0; i < 10; i += 1) {
+    result += num2;
     array.push(result);
   }
+  return array;
+};
+
+export const createQuestionProgression = () => {
+  const firstNum = getRandomIntInclusive(1, 100);
+  const diff = getRandomIntInclusive(1, 10);
+  const arr = generateProgression(firstNum, diff);
   const repNum = getRandomIntInclusive(1, 10);
-  const correctAnswer = array[repNum];
-  array[repNum] = '..';
-  const arrToString = array.join(' ');
+  const correctAnswer = arr[repNum];
+  arr[repNum] = '..';
+  const arrToString = arr.join(' ');
   return [arrToString, correctAnswer];
 };
 
-export const isProgressionGame = () => {
+export const playProgressionGame = () => {
   const rules = ('What number is missing in the progression?');
-  game(rules, createQuestionProgression);
+  runGame(rules, createQuestionProgression);
 };

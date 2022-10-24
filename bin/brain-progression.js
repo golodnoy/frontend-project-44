@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { isProgressionGame } from '../src/games/progression.js';
+import { playProgressionGame } from '../src/games/progression.js';
 
-isProgressionGame();
+playProgressionGame();

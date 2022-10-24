@@ -1,4 +1,4 @@
-import game from '../index.js';
+import runGame from '../index.js';
 import getDividers from '../dividers.js';
 import getRandomIntInclusive from '../util.js';
 
@@ -18,7 +18,7 @@ export const createQuestionPrime = () => {
   return [randomNum, correctAnswer];
 };
 
-export const isPrimeGame = () => {
+export const playPrimeGame = () => {
   const rules = ('Answer "yes" if given number is prime. Otherwise answer "no".');
-  game(rules, createQuestionPrime);
+  runGame(rules, createQuestionPrime);
 };
