@@ -1,26 +1,28 @@
 import runGame from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
-const generateProgression = (num1, num2) => {
-  let result = num1;
+const lengthProgression = 10;
+
+const createProgression = (first, step) => {
+  let result = first;
   const array = [];
-  array.push(num1);
-  for (let i = 0; i < 10; i += 1) {
-    result += num2;
+  array.push(first);
+  for (let i = 0; i < lengthProgression; i += 1) {
+    result += step;
     array.push(result);
   }
   return array;
 };
 
 export const createQuestionProgression = () => {
-  const firstNum = getRandomIntInclusive(1, 100);
-  const diff = getRandomIntInclusive(1, 10);
-  const arr = generateProgression(firstNum, diff);
-  const repNum = getRandomIntInclusive(1, 10);
-  const correctAnswer = arr[repNum].toString();
-  arr[repNum] = '..';
-  const arrToString = arr.join(' ');
-  return [arrToString, correctAnswer];
+  const first = getRandomIntInclusive(1, 100);
+  const step = getRandomIntInclusive(1, lengthProgression);
+  const progression = createProgression(first, step);
+  const replaceElement = getRandomIntInclusive(1, lengthProgression);
+  const correctAnswer = progression[replaceElement].toString();
+  progression[replaceElement] = '..';
+  const question = progression.join(' ');
+  return [question, correctAnswer];
 };
 
 export const playProgressionGame = () => {
