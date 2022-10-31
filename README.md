@@ -6,15 +6,31 @@
 <h2>About project</h2>
 <p>
 Educational project for studying front-end development - the game 'Brain Games'
-</p>
 
+* Requirements
+
+The project contains 5 games, the general process of the games is as follows:
+
+1. Getting to know the user
+2. Demonstration of the rules of the game
+3. The game starts, the first question about the game is displayed for the player to answer.
+4. If the answer is correct, the player moves on to the second round. total number of rounds : 3
+5. In case of an incorrect answer, the game ends. A message is displayed with information on the player's answer and the correct answer to the question.
+6. Upon completion of three rounds in a row with success, the game ends, the player is shown a message with congratulations.
+
+See the file <a href="src/index.js">index.js</a>)
+
+The logic of forming questions and checking the answers of each game is provided individually, see files in  <a href="src/games">games</a> and show demo game
+</p>
 
 * Install
 ```js
 make install
 ```
 
-* Run games (see in <a href="Makefile">Makefile</a>)
+* Run games 
+<p>Games are launched through the terminal. (see commands in <a href="Makefile">Makefile</a>)</p>
+
 ```js
 brain-even // start game Brain-even
 brain-calc // start game Brain-calc
@@ -23,7 +39,9 @@ brain-progression // start game Brain-progression
 brain-prime // start game Brain-prime
 ```
 
-<h2>Demo games in Asciinema</h2>
+<h2>Demo games</h2>
+
+<p>Game demos are recorded using ASCIINEMA, if they are not available for viewing at the moment - sorry and write to me.</p>
 
 <h3>Brain-even (Parity check)</h3>
 
