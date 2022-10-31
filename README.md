@@ -3,15 +3,27 @@
 
 <a href="https://codeclimate.com/github/golodnoy/frontend-project-44/maintainability"><img src="https://api.codeclimate.com/v1/badges/ff0571975304c2478de7/maintainability" /></a>
 
+<h2>About project</h2>
+<p>
+Educational project for studying front-end development - the game 'Brain Games'
+</p>
+
 
 * Install
 ```js
-
+make install
 ```
 
-How to run games, see in the <a href="Makefile">Makefile</a>
+* Run games (see in <a href="Makefile">Makefile</a>)
+```js
+brain-even // start game Brain-even
+brain-calc // start game Brain-calc
+brain-gcd // start game Brain-gcd
+brain-progression // start game Brain-progression
+brain-prime // start game Brain-prime
+```
 
-* Demo games in Ascinema
+<h2>Demo games in Asciinema</h2>
 
 <h3>Brain-even (Parity check)</h3>
 
