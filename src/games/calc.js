@@ -14,13 +14,13 @@ export const createQuestionCalc = () => {
   const firstValue = getRandomIntInclusive(1, 100);
   const secondValue = getRandomIntInclusive(1, 100);
   const characters = '*+-';
-  const sign = characters.charAt((getRandomIntInclusive(0, 2)));
+  const sign = characters.charAt((getRandomIntInclusive(0, characters.length - 1)));
   const correctAnswer = calcResult(firstValue, secondValue, sign).toString();
   const question = (`${firstValue} ${sign} ${secondValue}`);
   return [question, correctAnswer];
 };
 
 export function playCalcGame() {
-  const rules = 'What is the result of the expression?';
-  runGame(rules, createQuestionCalc);
+  const rule = 'What is the result of the expression?';
+  runGame(rule, createQuestionCalc);
 }

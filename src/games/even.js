@@ -10,6 +10,6 @@ export const createQuestionEven = () => {
 };
 
 export const playEvenGame = () => {
-  const rules = ('Answer "yes" if the number is even, otherwise answer "no".');
-  runGame(rules, createQuestionEven);
+  const rule = ('Answer "yes" if the number is even, otherwise answer "no".');
+  runGame(rule, createQuestionEven);
 };
